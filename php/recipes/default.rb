@@ -69,7 +69,6 @@ end
 template '/etc/php-fpm.d/www.conf' do
   source 'php70-www.conf'
   notifies :restart, "service[php-fpm]", :immediately
-  notifies :restart, "service[newrelic-daemon]", :immediately
 end
 
 template '/etc/php.ini' do
@@ -78,7 +77,6 @@ template '/etc/php.ini' do
   group 'root'
   mode '0644'
   notifies :restart, "service[php-fpm]", :immediately
-  notifies :restart, "service[newrelic-daemon]", :immediately
 end
 
 service "php-fpm" do
